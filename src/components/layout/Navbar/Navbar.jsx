@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Nav, Navbar, Button, Form, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import logo from "../../../imagenes/Imagen1.png";
+import logo from "../../../assets/img/logo/Imagen1.png";
 import Login from '../../Login';
 
 
@@ -29,6 +29,7 @@ const NavBar = () => {
               <Link className="nav-link text-white" to="/contacto">Contacto</Link>
               <Link className="nav-link text-white" to="/favoritos">Favoritos</Link>
               <Link className="nav-link text-white" to="/tablaproducto">Productos</Link>
+              <Link className="nav-link text-white" to="detprod">detalles Productos</Link>
               <Button variant="warning" onClick={handleShow}>
                 Login
               </Button>
