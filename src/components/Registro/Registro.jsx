@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { Image } from 'react-bootstrap';
 import logo from '../../assets/img/logo/Imagen1.png'
 import facebook from '../../assets/img/social-icons/facebook-logo.webp'
-import google from '../../assets/img/social-icons/google-logo.png'
+import google from '../../assets/img/social-icons/google-logo.png';
 
 const Registro = ({show, handleClose}) => {
     return (
@@ -93,7 +93,7 @@ const Registro = ({show, handleClose}) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="warning" onClick={handleClose}>
                         to accept
                     </Button>
                 </Modal.Footer>
