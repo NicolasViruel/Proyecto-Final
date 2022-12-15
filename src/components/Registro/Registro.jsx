@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -6,34 +6,78 @@ import { Image } from 'react-bootstrap';
 import logo from '../../assets/img/logo/Imagen1.png'
 import facebook from '../../assets/img/social-icons/facebook-logo.webp'
 import google from '../../assets/img/social-icons/google-logo.png';
+import registerUser from '../../helpers/fetchApp'
 
-const Registro = ({show, handleClose}) => {
+
+const Registro = ({ show, handleClose }) => {
+    const [username, setUsername] = useState('')
+    const [usermail, setUsermail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const [user, setuser] = useState(null)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const user = await registerUser({
+                username,
+                usermail,
+                password
+            })
+            setuser(user),
+                setUsername(''),
+                setUsermail(''),
+                setPassword('')
+            console.log(user)
+        } catch (error) {
+
+        }
+    }
     return (
         <>
             <Modal show={show} onHide={handleClose} backdrop="static">
                 <Modal.Header closeButton>
                     <Modal.Title>
-                    <Image src={logo} alt="logo" width="40" />
+                        <Image src={logo} alt="logo" width="40" />
                         Register
-                        </Modal.Title>
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control placeholder="Enter name" />
+                            <Form.Control
+                                type='text'
+                                value={username}
+                                maxLength={50}
+                                placeholder="Enter name"
+                                onChange={({ target }) => setUsername(target.value)}
+                            />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control
+                                type="email"
+                                value={usermail}
+                                name='usermail'
+                                maxLength={50}
+                                placeholder="Enter email"
+                                onChange={({ target }) => setUsermail(target.value)}
+                            />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
-
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control
+                                type="password"
+                                value={password}
+                                name="password"
+                                maxLength={30}
+                                placeholder="Password"
+                                onChange={({ target }) => setPassword(target.value)}
+                            />
                         </Form.Group>
                         <div className='d-grid gap-2'>
                             <Button variant="warning" type="submit">
