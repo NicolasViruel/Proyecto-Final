@@ -6,7 +6,7 @@ import { Image } from 'react-bootstrap';
 import logo from '../../assets/img/logo/Imagen1.png'
 import facebook from '../../assets/img/social-icons/facebook-logo.webp'
 import google from '../../assets/img/social-icons/google-logo.png';
-import registerUser from '../../helpers/fetchApp'
+
 
 
 const Registro = ({ show, handleClose }) => {
