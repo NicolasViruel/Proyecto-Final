@@ -1,5 +1,5 @@
 import React from "react";
-import CardProducto from "./CardProducto/CardProducto";
+import GridProducts from "./CardProducto/GridProducts"
 import Calesita from "./Carousel/Carousel";
 
 const Home = (props) => {
@@ -8,7 +8,7 @@ const Home = (props) => {
     <div>
       {/* Carousel */}
       <Calesita />
-      <CardProducto />
+      <GridProducts />
       {/* Products */}
     
     </div>

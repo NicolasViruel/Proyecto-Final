@@ -29,7 +29,7 @@ const NavBar = () => {
               <Link className="nav-link text-white" to="/contacto">Contacto</Link>
               <Link className="nav-link text-white" to="/favoritos">Favoritos</Link>
               <Link className="nav-link text-white" to="/tablaproducto">Productos</Link>
-              <Link className="nav-link text-white" to="detprod">detalles Productos</Link>
+              <Link className="nav-link text-white" to="/products/:title">detalles Productos</Link>
               <Button variant="warning" onClick={handleShow}>
                 Login
               </Button>
