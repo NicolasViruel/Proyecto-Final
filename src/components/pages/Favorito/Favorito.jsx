@@ -1,4 +1,6 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
+import Construction from '../../Construction/Construction'
 
 const Favorito = (props) => {
   props.funcNav(true)
@@ -7,7 +9,7 @@ const Favorito = (props) => {
     <Container className='pt-5'>
       <h1>Favorites</h1>
       <hr />
-      <Construction />
+      <Construction/>
     </Container>
   )
 }

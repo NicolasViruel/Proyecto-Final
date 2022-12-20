@@ -84,6 +84,7 @@ const Registro = ({ show, handleClose }) => {
                                 We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
+
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             {/* <Form.Control type="password" placeholder="Password" /> */}
@@ -100,6 +101,7 @@ const Registro = ({ show, handleClose }) => {
                             <h3 className="col-12">Sign in with</h3>
                         </div>
                         <div className="row justify-content-center">
+                            {/* <!--Row para organizar 2 botones--> */}
                             <div className="d-flex">
                                 <Button variant="outline-info" className=" w-100 my-1 mx-2">
                                     <a
@@ -108,6 +110,7 @@ const Registro = ({ show, handleClose }) => {
                                         target="_blank"
                                     >
                                         <div className=" row align-content-center">
+                                            {/* <!--Row para alinear img y texto--> */}
                                             <div className="col-2 d-none d-md-block">
                                                 <Image src={facebook} className="mx-3" width="30" alt="facebook" />
                                             </div>
@@ -117,6 +120,8 @@ const Registro = ({ show, handleClose }) => {
                                         </div>
                                     </a>
                                 </Button>
+                                {/* <!--Final de Primer Boton--> */}
+
                                 <Button variant="outline-warning" className=" w-100 my-1 mx-2">
                                     <a
                                         href="https://www.google.com/"
@@ -124,6 +129,7 @@ const Registro = ({ show, handleClose }) => {
                                         target="_blank"
                                     >
                                         <div className=" row align-content-center">
+                                            {/* <!--Row para alinear img y texto--> */}
                                             <div className="col-2 d-none d-md-block">
                                                 <Image src={google} className="mx-3" width="30" alt="google" />
                                             </div>
@@ -133,6 +139,7 @@ const Registro = ({ show, handleClose }) => {
                                         </div>
                                     </a>
                                 </Button>
+                                {/* <!--Final de Segundo Boton--> */}
                             </div>
                         </div>
                     </div>
