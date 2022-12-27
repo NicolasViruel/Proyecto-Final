@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Button, Col, Container, Form, Image, Row, } from 'react-bootstrap'
+import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom';
 import instance from '../../../api/axiosUsuarios';
 import logo from "../../../assets/img/logo/Imagen1.png";
@@ -13,7 +13,6 @@ const EdicionProducto = (props) => {
   const [productoEditar, setProductoEditar] = useState({})
 
   const { id } = useParams()
-  console.log(useParams);
 
   const productoNameRef = useRef("")
   const productoEditarRef = useRef("")
@@ -26,7 +25,6 @@ const EdicionProducto = (props) => {
   const getProductosID = async () => {
     try {
       const resp = await instance.get(`/productos/${id}`,)
-      console.log(resp);
       setProductoEditar(resp.data)
         ;
     } catch (error) {
@@ -40,9 +38,12 @@ const EdicionProducto = (props) => {
 
   }, [])
 
+  useEffect(() => {
+    props.funcNav(true)
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(productoNameRef.current.value);
     //validador de campos
     if (
       !validateProductName(productoNameRef.current.value) ||
@@ -52,7 +53,11 @@ const EdicionProducto = (props) => {
       !validateCategory(productoEditar.Category) ||
       validatePorcentaje(productoPorcentajeRef.current.value)
     ) {
-      Swal.fire("ops!", "One or more fields are invalid", "Error")
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'One or more fields are invalid!'
+      })
       return
     }
     console.log("datos correctos");
@@ -100,17 +105,16 @@ const EdicionProducto = (props) => {
         <h1 >Edit Product</h1>
         <hr />
         <Row>
-
           <Col xs={12} md={6}>
             <Form className="my-2" >
               <Form.Group className="my-1" controlId="nombrerProducto">
                 <Form.Label>Product</Form.Label>
-                <Form.Control type="text" placeholder="Ej:Ipa" defaultValue={productoEditar.ProductName}
+                <Form.Control type="text" placeholder="Ej:Ipa" maxLength={50} minLength={1}defaultValue={productoEditar.ProductName}
                   ref={productoNameRef} />
               </Form.Group>
               <Form.Group className="my-1" controlId="detalleProducto">
                 <Form.Label>Details</Form.Label>
-                <Form.Control type="text" placeholder="Ej: Cerveza Aromatizada con caramelo" defaultValue={productoEditar.Productdetalle} ref={productoEditarRef} />
+                <Form.Control type="text" placeholder="Ej: Cerveza Aromatizada con caramelo" maxLength={100} minLength={10}defaultValue={productoEditar.Productdetalle} ref={productoEditarRef} />
               </Form.Group>
               <Form.Group className="my-1" controlId="precioProducto">
                 <Form.Label>Price</Form.Label>
@@ -150,12 +154,13 @@ const EdicionProducto = (props) => {
               </Form.Group>
               <div className="text-center mt-3">
                 <Button variant="warning" onClick={handleSubmit}>Update 🍻</Button>
+                <Button variant="danger" className='mx-3' onClick={() => navigate(`/tablaproducto`)}>Go to Back 🡆</Button>
               </div>
             </Form>
           </Col>
           {/* Form Product */}
-          <Col className="d-sm-none d-md-block">
-            <Image src={logo} alt="logo" style={{ maxWidth: '100%' }} />
+          <Col className="d-none d-md-block text-center">
+            <Image src={logo} alt="logo" style={{maxWidth: '100%'}} />
           </Col>
 
         </Row>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Col, Container, Form, Row , Button} from 'react-bootstrap'
+import { Col, Container, Form, Row , Button, Image} from 'react-bootstrap'
 import Swal from 'sweetalert2';
 import logo from "../../../assets/img/logo/Imagen1.png"
 import { validateProductName, validateDetalleProducto,validatePrice,validateUrl,validateCategory, validatePorcentaje,} from '../../helpers/validateFields';
@@ -28,7 +28,7 @@ const CreacionProducto = () => {
       validatePorcentaje(graduacionProducto)
      )
      {
-      Swal.fire("ops!","Uno o mas Datos son Invalidos","Error")     
+      Swal.fire("ops!","One or more fields are invalid","Error")     
      return 
      }
    
@@ -42,12 +42,12 @@ const CreacionProducto = () => {
     Avaliable:disponibilidadProducto
   }
   Swal.fire({
-    title: 'Quieres crear este producto?',    
+    title: 'Do you want to create this product?',    
     icon: 'question',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Aceptar'
+    confirmButtonText: 'Accept'
   }).then( async (result) => {
     if (result.isConfirmed) {
       try {
@@ -57,8 +57,8 @@ const CreacionProducto = () => {
 
       if (resp.status===200) {
         Swal.fire(
-       'Creado!',
-       'Su producto se creo correctamente.',
+       'Created!',
+       'The product was created correctly.',
        'success'
      )  
      
@@ -77,19 +77,20 @@ const CreacionProducto = () => {
   return (
     <div>
       
-      <Container className="py-1" >
-        <h5>Crear Producto</h5>        
+      <Container className="py-5" >
+        <h1>Create Product</h1>        
+        <hr />
         <Row>
           <Col lg={6}>
             {/* Form Product */}
           <Form className="my-2" >
           <Form.Group className="my-1 " controlId="nombrerProducto">
-            <Form.Label>Producto</Form.Label>
-            <Form.Control type="text" placeholder="Ej:Ipa" onChange={({target})=> setnombreProducto(target.value)} />
+            <Form.Label>Product</Form.Label>
+            <Form.Control type="text" placeholder="Ej:Ipa" maxLength={50} minLength={1} onChange={({target})=> setnombreProducto(target.value)} />
           </Form.Group>
           <Form.Group className="my-1" controlId="detalleProducto">
-            <Form.Label>Detalle</Form.Label>
-            <Form.Control type="text" placeholder="Ej: Cerveza Aromatizada con caramelo" onChange={({target})=> setdetallerProducto(target.value)}/>
+            <Form.Label>Details</Form.Label>
+            <Form.Control type="text" placeholder="Ej: Cerveza Aromatizada con caramelo"  maxLength={100} minLength={10} onChange={({target})=> setdetallerProducto(target.value)}/>
           </Form.Group>
           <Form.Group className="my-1" controlId="precioProducto">
             <Form.Label>Price</Form.Label>
@@ -106,35 +107,36 @@ const CreacionProducto = () => {
           <Form.Group className="my-1" controlId="categoriaProducto">
             <Form.Label>Category</Form.Label>
             <Form.Select onChange={({target})=> setcategoriaProducto(target.value)} >
-              <option value="">Seleccione una categoria</option>
-              <option value="Cerveza">Cerveza</option>
-              <option value="Cocteleria">Cocteleria</option>
+              <option value="">Select a category</option>
+              <option value="Cerveza">Beer</option>
+              <option value="Cocteleria">Cocktail</option>
               <option value="Merchandising">Merchandising</option>
-              <option value="comidas">Comidas</option>              
-              <option value="Otros">Otros</option>              
+              <option value="comidas">Foods</option>              
+              <option value="Otros">Others</option>              
             </Form.Select>
           </Form.Group>
           <Form.Group className="my-1" controlId="Graducaion">
-            <Form.Label>Graduacion</Form.Label>
+            <Form.Label>Graduation</Form.Label>
             <Form.Control type="text" placeholder="Ej: 5% "  onChange={({target})=> setgraduacionProducto(target.value)}/>
           </Form.Group>
           <Form.Group className="my-1" controlId="Disponibiliadad">
-            <Form.Label>Disponibiidad</Form.Label>
+            <Form.Label>Availability</Form.Label>
           <Form.Select onChange={({target})=> setdisponibilidadProducto(target.value)}>
-              <option value="true">Si</option>
+              <option value="true">Yes</option>
               <option value="false">No</option>                          
             </Form.Select>
           </Form.Group>
-          <div className="text-center">
-            <Button variant="warning" onClick={handleSubmit} >Crear🍻</Button>
+          <div className="text-center mt-3">
+            <Button variant="warning" onClick={handleSubmit} >Create 🍻</Button>
+            <Button variant="danger" className='mx-3' onClick={() => navigate(`/tablaproducto`)}>Go to Back 🡆</Button>
           </div>
         </Form>
           </Col>      
         {/* Form Product */}
         {/* logo lateral */}
-        <Col lg={6} >
-        <img src={logo} alt="" />
-        </Col>
+        <Col className="d-none d-md-block text-center">
+            <Image src={logo} alt="logo" style={{maxWidth: '100%'}} />
+          </Col>
         {/* logo lateral */}
         </Row>
       </Container>

@@ -5,10 +5,11 @@ import { Table } from "react-bootstrap";
 import {v4 as uuidv4} from 'uuid';
 import Moment from 'moment';
 import { Image } from "react-bootstrap";
-
+import { useNavigate } from 'react-router-dom';
 
 
 const ModalCarrito = ({show, handleClose}) => {
+  const navigate = useNavigate()
     const myuuid = uuidv4()
     const [cart, setCart] = useState([]);
   useEffect(() => {
@@ -33,6 +34,7 @@ const ModalCarrito = ({show, handleClose}) => {
     for (let index = 0; index < cart.length; index++) {
       total=total + parseFloat(cart[index].PriceProduct)
     }
+    
         
   return (
     <Modal show={show} onHide={handleClose}>
@@ -45,7 +47,7 @@ const ModalCarrito = ({show, handleClose}) => {
       <h6 className="align-middle text-center mt-3">Hour: {Moment().format(' hh:mm A')}</h6>
       <h6 className="align-middle text-center mt-3">DETAILS OF YOUR PURCHASE:</h6>
       <Modal.Body>
-        <Table bordered hover responsive className="align-middle text-center mt-3">
+        <Table bordered striped hover responsive variant="dark" className="align-middle text-center mt-3">
           <thead>
             <tr>
               <th>N.</th>
@@ -73,7 +75,7 @@ const ModalCarrito = ({show, handleClose}) => {
                    <Button variant="outline-danger mx-1" onClick={()=>{
                         deleteProduct(prod.uuid);
                     }}>
-                    <box-icon name="message-square-x" type="solid"></box-icon>
+                    <i className="fa-solid fa-trash"></i>
                   </Button>
                 </div>
               </td>
@@ -89,7 +91,7 @@ const ModalCarrito = ({show, handleClose}) => {
         <Button variant="secondary" onClick={vaciarCarrito}>
         Clear cart
         </Button>
-        <Button variant="primary" onClick={handleClose}>
+        <Button variant="primary" onClick={() => navigate(`/*`)}>
           Buy
         </Button>
       </Modal.Footer>

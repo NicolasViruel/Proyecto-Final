@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CreacionProducto from "../components/pages/CreacionProducto"
 import EdicionProducto from "../components/pages/EdicionProducto"
 import EdicionUsuario from "../components/pages/EdicionUsuario/EdicionUsuario";
@@ -46,9 +46,7 @@ const RouterPrincipal = () => {
         <Route exact path="/favoritos" element={<Favorito funcNav={setShowNav} />} />
         <Route exact path="/products/:id" element={<DetProd funcNav={setShowNav} />} />
         <Route exact path="*" element={<Error404 funcNav={setShowNav} />} />
-
         <Route path="/tablausuarios" element={<TablaUsuarios />}></Route>
-        {/* <Route path="/tablausuarios" element={<TablaUsuarios funcNav={setShowNav}/>}/> */}
 
       </Routes>
       {showNav &&

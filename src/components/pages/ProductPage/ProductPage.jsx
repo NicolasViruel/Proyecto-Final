@@ -7,11 +7,11 @@ import ModalCarrito from "../Carrito/carrito.jsx"
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
-// import BtnPaginacion from '../../BtnPaginacion/BtnPaginacion';
+
 
 
 const ProductPage = (props) => {
-  props.funcNav(true)
+  
   //usamos un useState , para definir las variables
   const [producto, setProductos] = useState([])
   const [buscadorProducto, setbuscadorProductos] = useState("")
@@ -30,7 +30,6 @@ const ProductPage = (props) => {
     try {
       //creamos una constante para poner la info de la base
       const resp = await instance.get("/productos/")
-      console.log(resp);
       //si la base tiene info seteamos producto para que traiga la info de la base
       setProductos(resp.data)
     } catch (error) {
@@ -41,7 +40,6 @@ const ProductPage = (props) => {
 
   }
   const search = async () => {
-    console.log(buscadorProducto);
     if (buscadorProducto === "") {
       getProductos()
       return
@@ -55,9 +53,7 @@ const ProductPage = (props) => {
     }
   }
   const searchEnter = (e) => {
-    // console.log(e)
 
-    //  console.log(e.code)
     if (e.code === 'Enter') {
       search()
       e.preventDefault()
@@ -69,11 +65,10 @@ const ProductPage = (props) => {
   //guardar en carrito
   const guardaCarrito = (newProduct) => {
     Swal.fire(
-      "Agregado a Carrito",
+      "Added to cart",
       "",
       "success"
     );
-    console.log(newProduct);
     newProduct = {
       ...newProduct,
       uuid: uuidv4()
@@ -90,6 +85,10 @@ const ProductPage = (props) => {
   useEffect(() => {
     setProductosCart(JSON.parse(localStorage.getItem('cart')) || []);
   }, [show])
+
+  useEffect(() => {
+    props.funcNav(true)
+  }, [])
 
   return (
     <>
@@ -129,33 +128,25 @@ const ProductPage = (props) => {
           {producto.length > 0 ? (
             producto.map((prod) => (
               <Col xs={12} lg={4} md={6} key={prod._id} className="mb-3">
-                {console.log(prod)}
-                <Card className="my-4 h-100 card-test" style={{ position: 'relative' }}>
+                <Card className="mt-4 h-100 card-test" style={{ position: 'relative' }}>
                   <Card.Img variant="top" src={prod.ImgURL} className="imagen-tarjeta" />
                   <Card.Body>
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <Card.Title className="">{prod.ProductName}</Card.Title>
-                      {/* <span className="badge bg-yellow">{prod.Category}</span> */}
                     </div>
                     <Badge bg="warning" text="dark">{prod.Category}</Badge>{' '}
                     <Card.Text className='mt-3'>
-                      {/* <p className="">
-                      {prod.Category}
-                      </p> */}
-                      {/* <p className='mt-3'>{prod.Productdetalle}</p> */}
                       {prod.Productdetalle}
                     </Card.Text>
                     <Card.Text>
-                      {/* <p className="">Graduacion: {prod.Graduation}</p> */}
                       Graduacion: {prod.Graduation}
                     </Card.Text>
-                    <Card.Text className='textCard'>
-                      {/* <p className="mb-0 ms-2 ">Precio:${prod.PriceProduct}{" "}</p> */}
+                    <Card.Text >
                       Precio:${prod.PriceProduct}
                     </Card.Text>
-                    <div style={{ position: 'absolute', bottom: 0 }} className="mb-3">
-                      <Button type="submit" variant="info" onClick={() => { incrementarCarrito(); guardaCarrito(prod) }}> Add to 🛒</Button>
-                      <Button className='mx-3' variant='danger' onClick={() => navigate(`/favoritos`)}>Add to ❤</Button>
+                    <div className="d-grid gap-2">
+                    <Button type="submit" variant="info" onClick={() => { incrementarCarrito(); guardaCarrito(prod) }}> Add to 🛒</Button>
+                      <Button variant='danger' onClick={() => navigate(`/favoritos`)}>Add to ❤</Button>
                       <Button variant="secondary" onClick={() => navigate(`/products/${prod._id}`)}>
                         Details
                       </Button>
@@ -169,11 +160,29 @@ const ProductPage = (props) => {
               <Spinner color="warning" />
             </div>
           )}
-          {/* <BtnPaginacion registro={registro} total={posts.total} nextPage={nextPage} prevPage={prevPage}/> */}
+        
+          
         </Row>
         {/* productos */}
+    
       </Container>
       <ModalCarrito show={show} handleClose={handleClose} />
+      <nav aria-label="...">
+        <ul className="pagination pagination-sm justify-content-center pl-3">
+          <li className="page-item">
+            <a className="page-link" href="./*"></a>
+          </li>
+          <li className="page-item active"><a className="page-link" href="./*">1</a></li>
+          <li className="page-item " aria-current="page">
+            <a className="page-link" href="./*">2</a>
+          </li>
+          <li className="page-item"><a className="page-link" href="./*">3</a></li>
+          <li className="page-item"><a className="page-link" href="./*">4</a></li>
+          <li className="page-item">
+            <a className="page-link" href="./*">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
     </>
   );
 }
