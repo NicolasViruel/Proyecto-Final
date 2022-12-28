@@ -2,13 +2,7 @@
 
 ## Nombre del proyecto: Born to drink beer🍻
 
-#####  Proyecto final de Rolling Code School. es un e-commerce de una cerveceria, se utilizó react, CSS, Bootstrap, axios, express, font-awesome, jwt-decode, sweetalert2 para el front-end, y se utilizó NodeJs, bcryptJs, crypto, express, Json web token, mongoose y nodemailes para el back-end.
-
-## Pre-requisitos 📋
-###### Cosas que se necesitan tener instaladas o configuradas previamente para utilizar tu proyecto
-
-###### -NodeJS 
-###### -Npm (viene incluido en NodeJS) 
+#####  Proyecto final de Rolling Code School. es un e-commerce de una cerveceria, se utilizó react, CSS, Bootstrap, axios, express, font-awesome, jwt-decode, sweetalert2 para el front-end.
 
 ## Instalación ⚙️ 
 
@@ -50,15 +44,6 @@
 ###### 6. - Font-awesome
 ###### 7. - Jwt-decode
 ###### 8. - Sweetalert2
-
-###### - Back-end
-###### 1. NodeJs
-###### 2. BcryptJs
-###### 3. Crypto
-###### 4. Express
-###### 5. Json web token
-###### 6. Mongoose
-###### 7. Nodemailes
 
 ## Integrantes del Proyecto
 
