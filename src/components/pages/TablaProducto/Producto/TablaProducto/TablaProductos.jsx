@@ -142,7 +142,7 @@ const TablaProducto = (props) => {
                         height={100} />
                     </td>
                     <td>{prod.Category}</td>
-                    <td>{prod.Graduation}</td>
+                    <td>{prod.Graduation}%</td>
                     <td>{prod.Avaliable ? 'Yes' : 'No'}</td>
                     <td >
                       <div className="d-flex justify-content-center">

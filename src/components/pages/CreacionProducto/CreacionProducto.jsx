@@ -15,34 +15,34 @@ const CreacionProducto = () => {
     nombreProducto: Yup.string()
       .min(3, "Minimo 3 caracteres")
       .max(50, "Maximo 50 caracteres")
-      .matches(regExpProductName, "Fomato invalido")
+      .matches(regExpProductName, "Invalido Format")
       .trim()
-      .required("El nombre del prodcuto es requerido"),
+      .required("Product name is required"),
     detalleProducto: Yup.string()
       .min(3, "Minimo 3 caracteres")
       .max(100, "Maximo 50 caracteres")
-      .matches(regExpProductName, "Fomato invalido")
+      .matches(regExpProductName, "Invalido Format")
       .trim()
-      .required("El detalle del prodcuto es requerido"),
+      .required("Product detail is required"),
     precioProducto: Yup.number()
       .min(0, "Minimo 0")
       .max(9999, "Maximo 4")
-      .required("El precio es requerido"),
+      .required("The price is required"),
     urlProducto: Yup.string()
-      .url("Formato invalido")
-      .required("La URL es requerida"),
+      .url("FInvalido Format")
+      .required("URL is required"),
     categoriaProducto: Yup.string()
       .min(2, "Minimo 2 caracteres")
       .max(30, "Maximo 3 caracteres")
       .trim()
-      .required("La categoria es requerida"),
+      .required("The category is required"),
     graduacionProducto: Yup.string()
-      .min(2, "Minimo 2 caracteres")
-      .max(3, "Maximo 4 caracteres")
+      .min(1, "Minimo 1 caracteres")
+      .max(3, "Maximo 3 caracteres")
       .matches(regExpPorcentaje,"Debe ser porcentaje")
       .trim()
-      .required("La graduacion es requerida"),
-    disponibilidadProducto: Yup.boolean().required("La disponibilidad es requerida"),
+      .required("Graduation is required"),
+    disponibilidadProducto: Yup.boolean().required("Availability is required"),
   });
   const initialValues = {
     nombreProducto: "",
@@ -256,7 +256,7 @@ const CreacionProducto = () => {
                 <Form.Label>Graduation</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Ej: 5 "
+                  placeholder="Ej:5 "
                   {...formik.getFieldProps("graduacionProducto")}
                   className={clsx(
                     "form-control",
@@ -280,6 +280,7 @@ const CreacionProducto = () => {
                       </span>
                     </div>
                   )}
+                  %
               </Form.Group>
               <Form.Group className="my-1" controlId="Disponibiliadad">
                 <Form.Label>Availability</Form.Label>
