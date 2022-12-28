@@ -13,33 +13,33 @@ const CreacionProducto = () => {
   const navigate = useNavigate();
   const ProductSchema = Yup.object().shape({
     nombreProducto: Yup.string()
-      .min(3, "Minimo 3 caracteres")
-      .max(50, "Maximo 50 caracteres")
-      .matches(regExpProductName, "Invalido Format")
+      .min(3, "Minimum 3 characters")
+      .max(50, "Maximun 50 Characters")
+      .matches(regExpProductName, "Invalid Format")
       .trim()
       .required("Product name is required"),
     detalleProducto: Yup.string()
-      .min(3, "Minimo 3 caracteres")
-      .max(100, "Maximo 50 caracteres")
-      .matches(regExpProductName, "Invalido Format")
+      .min(3, "Minimum 3 Characters")
+      .max(100, "Maximun 50 Characters")
+      .matches(regExpProductName, "Invalid Format")
       .trim()
       .required("Product detail is required"),
     precioProducto: Yup.number()
-      .min(0, "Minimo 0")
-      .max(9999, "Maximo 4")
+      .min(0, "Minimum 0")
+      .max(9999, "Maximun 4")
       .required("The price is required"),
     urlProducto: Yup.string()
       .url("FInvalido Format")
       .required("URL is required"),
     categoriaProducto: Yup.string()
-      .min(2, "Minimo 2 caracteres")
-      .max(30, "Maximo 3 caracteres")
+      .min(2, "Minimum 2 Characters")
+      .max(30, "Maximun 3 Characters")
       .trim()
       .required("The category is required"),
     graduacionProducto: Yup.string()
-      .min(1, "Minimo 1 caracteres")
-      .max(3, "Maximo 3 caracteres")
-      .matches(regExpPorcentaje,"Debe ser porcentaje")
+      .min(2, "Minimum 2 Characters")
+      .max(4, "Maximun 4 Characters")
+      .matches(regExpPorcentaje,"Must be a Nunmber")
       .trim()
       .required("Graduation is required"),
     disponibilidadProducto: Yup.boolean().required("Availability is required"),
@@ -169,7 +169,7 @@ const CreacionProducto = () => {
               <Form.Group className="my-1" controlId="precioProducto">
                 <Form.Label>Price</Form.Label>
                 <Form.Control
-                  type="number"
+                  type="text"
                   placeholder="Ej: 250"
                   {...formik.getFieldProps("precioProducto")}
                   className={clsx(
@@ -280,7 +280,7 @@ const CreacionProducto = () => {
                       </span>
                     </div>
                   )}
-                  %
+                  
               </Form.Group>
               <Form.Group className="my-1" controlId="Disponibiliadad">
                 <Form.Label>Availability</Form.Label>
