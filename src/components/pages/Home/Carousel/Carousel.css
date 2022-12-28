@@ -2,3 +2,10 @@
     height: 60vh;
     min
 } */
+/* .trasluz{
+    background: linear-gradient(rgba(34, 35, 41, 0.25), rgba(34, 35, 41, 0.25));
+} */
+
+.trasluz{
+        background:linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) ;
+}

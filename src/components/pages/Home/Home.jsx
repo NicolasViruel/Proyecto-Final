@@ -59,11 +59,13 @@ const Home = (props) => {
             </Col>
             <Col className="text-center" xs={12} md={12} lg={4}>
               <div className="mt-5">
+
                 <h1 className="mt-5 my-2 text-warning">Bienvenido : {userinfo ? userinfo.name : ""} </h1>
                 <p className=" mt-5 fw-bolder">Email : {userinfo ? userinfo.email : ""} </p>
                 <h3 className=" mt-5 fw-bolder text-dark">Beer les desea una</h3>
+
                 <img src={PapaNoel} alt="papanoel" style={{ maxWidth: '100%'}} />
-                <h1 className=" text-warning">SALUD!!!</h1>
+                <h1 className=" text-warning">Cheers!!!</h1>
               </div>
             </Col>
             <Col className="d-flex" xs={12} md={6} lg={4}>
