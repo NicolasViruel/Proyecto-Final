@@ -180,7 +180,7 @@ const navigate = useNavigate()
                       {prod.Productdetalle}
                     </Card.Text>
                     <Card.Text>
-                      Graduacion: {prod.Graduation}
+                      Graduacion: {prod.Graduation}%
                     </Card.Text>
                     <Card.Text >
                       Precio:${prod.PriceProduct}
