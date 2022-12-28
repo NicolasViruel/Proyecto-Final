@@ -6,9 +6,10 @@ import logo from "../../../assets/img/logo/Imagen1.png";
 import Login from '../../Login';
 import { jwtDecoded } from '../../helpers/Jwt';
 
-let token = localStorage.getItem("token") || false
 
-const NavBar = ({ setUserDate }) => {
+
+const NavBar = ({ setUserDate, userDate}) => {
+  let token = userDate
   const navigate = useNavigate()
   const [show, setShow] = useState(false);
   const [role, setRole] = useState(null);
@@ -19,9 +20,8 @@ const NavBar = ({ setUserDate }) => {
     setRole(null
       );
       setUserDate("");
-      navigate("/")
-      window.location.reload();
-    token = false;
+      navigate("/");
+    token = "";
 
   };
   const handleShow = () => setShow(true);
@@ -35,13 +35,13 @@ const NavBar = ({ setUserDate }) => {
 
   useEffect(() => {
   
-    if (token != null) {
+    if (token !== "") {
       setRole(jwtDecoded(token));
     }
    
-  }, [])
+  }, [userDate])
   
-
+  console.log(role);
 
   return (
     <div className="sticky-top">
@@ -56,8 +56,8 @@ const NavBar = ({ setUserDate }) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="Navbar me-auto color-nav">
               {
-                (token) ? 
-                  role == "admin" ? 
+                (token !== "") ? 
+                  role === "admin" ? 
                   (<>
                   <NavLink className="nav-link text-white mx-1" style={({ isActive }) => isActive ? activeStyle : undefined} to="/"><i className="fa-solid fa-house"></i> Home</NavLink>
                   <NavLink className="nav-link text-white mx-1" style={({ isActive }) => isActive ? activeStyle : undefined} to="/tablausuarios"><i className="fa-solid fa-lock"></i> ABM Users</NavLink>

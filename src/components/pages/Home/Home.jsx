@@ -17,23 +17,24 @@ import Honey from '../../../assets/img/imgHome/honey.jpg'
 import Scottisch from '../../../assets/img/imgHome/Scottisch.jfif'
 
 const Home = (props) => {
+ const [userinfo, setUserInfo] = useState(undefined)
 
   const getUSer = async (token) => {
     const config = {
       headers: {
-        "authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${token}`
       }
     }
     try {
       const resp = await instance.get("/users/info", config);
-      props.setUserDate(resp.data)
+      setUserInfo(resp.data)
     } catch (error) {
 
     }
   }
 
   useEffect(() => {
-    const user_token = localStorage.getItem("token");
+    const user_token = JSON.parse(localStorage.getItem("token"));
     if (user_token) {
       getUSer(user_token)
     }
@@ -58,9 +59,8 @@ const Home = (props) => {
             </Col>
             <Col className="text-center" xs={12} md={12} lg={4}>
               <div className="mt-5">
-                <h1 className="mt-5 my-2 text-warning">Bienvenido : {props.userdata.name} </h1>
-                <p className=" mt-5 fw-bolder">Email : {props.userdata.email} </p>
-                <p className="fw-bolder">Role : {props.userdata.role} </p>
+                <h1 className="mt-5 my-2 text-warning">Bienvenido : {userinfo ? userinfo.name : ""} </h1>
+                <p className=" mt-5 fw-bolder">Email : {userinfo ? userinfo.email : ""} </p>
                 <h3 className=" mt-5 fw-bolder text-dark">Beer les desea una</h3>
                 <img src={PapaNoel} alt="papanoel" style={{ maxWidth: '100%'}} />
                 <h1 className=" text-warning">SALUD!!!</h1>
