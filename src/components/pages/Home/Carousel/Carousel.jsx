@@ -1,5 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+import "./Carousel.css"
 
 
 const Calesita = () => {
@@ -12,8 +13,10 @@ const Calesita = () => {
           alt="cerveza1"
         />
         <Carousel.Caption>
-          <h3>Cerveza 1</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <div className="trasluz">
+            <h3>Bienvenidos a Born to Drink</h3>
+            <p>Un lugar para pasar con amigos de la mejor manera</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -23,8 +26,11 @@ const Calesita = () => {
           alt="cerveza2"
         />
         <Carousel.Caption>
-          <h3>Cerveza 2</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div className="trasluz">
+
+            <h3>Somos Lo mejor de la noche</h3>
+            <p>Con excelente ambiente y la mejor musica</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -34,10 +40,10 @@ const Calesita = () => {
           alt="cerveza3"
         />
         <Carousel.Caption>
-          <h3>Cerveza 3</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Un ambiente agradable</h3>
+            <p>Para conocer gente nueva o disfrutar con tus amigos</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -47,10 +53,10 @@ const Calesita = () => {
           alt="cerveza4"
         />
         <Carousel.Caption>
-          <h3>Cerveza 4</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Tenemos la mejor cerveza</h3>
+            <p>Nuestros productos son perfectamente selecionados para que disfrutes de la mejor cerveza</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -60,10 +66,10 @@ const Calesita = () => {
           alt="cerveza5"
         />
         <Carousel.Caption>
-          <h3>Cerveza 5</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Tenemos muchas variedades</h3>
+            <p>Disfruta de nuestras vairedades de cervezas y tragos preparados por nuestros barman</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -73,10 +79,10 @@ const Calesita = () => {
           alt="cerveza6"
         />
         <Carousel.Caption>
-          <h3>Cerveza 6</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Aprovecha nuestros servicios</h3>
+            <p>Trae a tu marido y retiralo dentro de unas horas, nunca hemos perdido a un marido y siempre se fue feliz de nuestro local</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -86,10 +92,10 @@ const Calesita = () => {
           alt="cerveza7"
         />
         <Carousel.Caption>
-          <h3>Cerveza 7</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Veni y festeja tu cumple</h3>
+            <p>Tenemos los mejores servicios y promociones para que festejes tu cumple con nosotros</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -99,10 +105,10 @@ const Calesita = () => {
           alt="cerveza8"
         />
         <Carousel.Caption>
-          <h3>Cerveza 8</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Los mejores tragos</h3>
+            <p>Nuestros Barman te prepararán los mejores tragos para que te olvides de tu ex</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -112,10 +118,10 @@ const Calesita = () => {
           alt="cerveza9"
         />
         <Carousel.Caption>
-          <h3>Cerveza 9</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>La mejor cerveza</h3>
+            <p>Fria como el corazon de tu ex</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
@@ -125,13 +131,13 @@ const Calesita = () => {
           alt="cerveza10"
         />
         <Carousel.Caption>
-          <h3>Cerveza 10</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <div className="trasluz">
+            <h3>Proba nuestro fast food</h3>
+            <p>Ademas de la mejor cerveza, tenemos las mejores comidas para acompañar tus bebidas</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
-      
+
     </Carousel>
   );
 };
