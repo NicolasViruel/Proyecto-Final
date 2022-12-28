@@ -20,16 +20,14 @@ import DetProd from "../components/pages/DetProducto/DetProd";
 
 const RouterPrincipal = () => {
   const [showNav, setShowNav] = useState(true);
-  const [userdata , setUserDate] = useState("");
- 
+  const [userdata , setUserDate] = useState(JSON.parse(localStorage.getItem("token")) || "");
  
   return (
-
 
     <>
     {   showNav &&
           <nav className="sticky-top">
-            <Navbar setUserDate={setUserDate} />
+            <Navbar setUserDate={setUserDate} userDate={userdata} />
           </nav>
    }
     <Routes>
