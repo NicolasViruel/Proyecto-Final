@@ -26,14 +26,14 @@ const TablaUsuarios = () => {
   };
 
   useEffect(() => {
-    const user_token = localStorage.getItem("token");
+    const user_token = JSON.parse(localStorage.getItem("token"));
     if (user_token) {
       getUsers(user_token);
     }
   }, []);
 
   const handleDelete = (id) => {
-    const user_token = localStorage.getItem("token");
+    const user_token = JSON.parse(localStorage.getItem("token"));
     console.log(user_token);
     const config = {
       headers: {
@@ -100,6 +100,8 @@ const TablaUsuarios = () => {
                       <td>{user.role}</td>
                       <td>
                       <div className="d-flex justify-content-center">
+                        {user.role !== "admin" &&
+                        <>
                         <Button variant="outline-success mx-1">
                           <Link
                             to={`/edicionUsuario/${user._id}`}
@@ -115,6 +117,7 @@ const TablaUsuarios = () => {
                         >
                           <i className="fa-solid fa-user-xmark"></i>
                         </Button>
+                        </>}
                       </div>
                       </td>
                       

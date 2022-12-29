@@ -14,8 +14,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Bienvenidos a Born to Drink</h3>
-            <p>Un lugar para pasar con amigos de la mejor manera</p>
+            <h3>Welcome to Born to Drink</h3>
+            <p>A place to hang out with friends</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -28,8 +28,8 @@ const Calesita = () => {
         <Carousel.Caption>
           <div className="trasluz">
 
-            <h3>Somos Lo mejor de la noche</h3>
-            <p>Con excelente ambiente y la mejor musica</p>
+            <h3>We're the best of the night</h3>
+            <p>With excellent atmosphere and the best music</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -41,8 +41,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Un ambiente agradable</h3>
-            <p>Para conocer gente nueva o disfrutar con tus amigos</p>
+            <h3>A great place</h3>
+            <p>To meet new people or enjoy with your friends</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -54,8 +54,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Tenemos la mejor cerveza</h3>
-            <p>Nuestros productos son perfectamente selecionados para que disfrutes de la mejor cerveza</p>
+            <h3>We've the best beers</h3>
+            <p>Our products are perfectly selected so that you can enjoy the best beer</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -67,8 +67,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Tenemos muchas variedades</h3>
-            <p>Disfruta de nuestras vairedades de cervezas y tragos preparados por nuestros barman</p>
+            <h3>We've many varieties</h3>
+            <p>Enjoy our varieties of beers and drinks prepared by our bartenders</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -80,8 +80,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Aprovecha nuestros servicios</h3>
-            <p>Trae a tu marido y retiralo dentro de unas horas, nunca hemos perdido a un marido y siempre se fue feliz de nuestro local</p>
+            <h3>We have excellent services</h3>
+            <p>Bring your husband and pick him up in a few hours, we've never lost a husband and he always leaves our place happy</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -93,8 +93,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Veni y festeja tu cumple</h3>
-            <p>Tenemos los mejores servicios y promociones para que festejes tu cumple con nosotros</p>
+            <h3>Come and celebrate your birthday</h3>
+            <p>We've the best promotions for you to celebrate your birthday with us</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -106,8 +106,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Los mejores tragos</h3>
-            <p>Nuestros Barman te prepararán los mejores tragos para que te olvides de tu ex</p>
+            <h3>The best bartenders</h3>
+            <p>Our bartenders will prepare the best drinks for you to forget your ex</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -119,8 +119,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>La mejor cerveza</h3>
-            <p>Fria como el corazon de tu ex</p>
+            <h3>Cold beers</h3>
+            <p>As cold as your ex's heart</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -132,8 +132,8 @@ const Calesita = () => {
         />
         <Carousel.Caption>
           <div className="trasluz">
-            <h3>Proba nuestro fast food</h3>
-            <p>Ademas de la mejor cerveza, tenemos las mejores comidas para acompañar tus bebidas</p>
+            <h3>Try our fast food</h3>
+            <p>Besides the best beer, we've the best food too</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
