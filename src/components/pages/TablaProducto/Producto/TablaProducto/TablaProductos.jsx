@@ -133,7 +133,7 @@ const TablaProducto = (props) => {
               <tbody>
                 {producto.length > 0 ? producto.map((prod, index) => (
                   <tr key={prod._id} >
-                    <td>{index}</td>
+                    <td>{index + 1}</td>
                     <td>{prod.ProductName}</td>
                     <td>{prod.Productdetalle}</td>
                     <td>${prod.PriceProduct}</td>
@@ -142,7 +142,7 @@ const TablaProducto = (props) => {
                         height={100} />
                     </td>
                     <td>{prod.Category}</td>
-                    <td>{prod.Graduation}</td>
+                    <td>{prod.Graduation}%</td>
                     <td>{prod.Avaliable ? 'Yes' : 'No'}</td>
                     <td >
                       <div className="d-flex justify-content-center">
