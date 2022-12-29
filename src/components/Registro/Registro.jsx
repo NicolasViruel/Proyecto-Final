@@ -34,6 +34,7 @@ const Registro = ({ show, handleClose }) => {
     password: Yup.string()
       .min(8, "Minimum 8 characters")
       .max(15, "Maximum 15 characters")
+      .required ("The password is requiered")
       .matches(
         regExpPassword,
         "It must have a capital letter, a lower case letter and a number"

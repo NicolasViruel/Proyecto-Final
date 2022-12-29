@@ -3,7 +3,7 @@ import { Button, Col, Container, Row, Spinner, Table } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import instance from "../../../api/axiosUsuarios";
 import Swal from "sweetalert2";
-// import "boxicons";
+
 
 const TablaUsuarios = () => {
   
@@ -26,7 +26,7 @@ const TablaUsuarios = () => {
   };
 
   useEffect(() => {
-    const user_token = localStorage.getItem("token");
+    const user_token = JSON.parse(localStorage.getItem("token"));
     if (user_token) {
       getUsers(user_token);
     }
