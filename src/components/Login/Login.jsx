@@ -53,7 +53,6 @@ const Login = ({ show, handleClose, setUserDate }) => {
         password: values.password,
         confirmPassword: values.confirmPassword,
       };
-      console.log(newLogin);
       try {
         const res = await instance.post("/auth/login", newLogin);
         const user_token = res.data.token;

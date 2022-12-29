@@ -26,14 +26,14 @@ const TablaUsuarios = () => {
   };
 
   useEffect(() => {
-    const user_token = localStorage.getItem("token");
+    const user_token = JSON.parse(localStorage.getItem("token"));
     if (user_token) {
       getUsers(user_token);
     }
   }, []);
 
   const handleDelete = (id) => {
-    const user_token = localStorage.getItem("token");
+    const user_token = JSON.parse(localStorage.getItem("token"));
     console.log(user_token);
     const config = {
       headers: {
