@@ -104,7 +104,7 @@ const CreacionProducto = () => {
         <h1>Create Product</h1>
         <hr />
         <Row>
-          <Col lg={6}>
+          <Col  xs={12} md={6}>
             {/* Form Product */}
             <Form className="my-2" noValidate onSubmit={formik.handleSubmit}>
               <Form.Group className="my-1 " controlId="nombrerProducto">
