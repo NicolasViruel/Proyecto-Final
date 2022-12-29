@@ -60,9 +60,10 @@ const Home = (props) => {
             <Col className="text-center" xs={12} md={12} lg={4}>
               <div className="mt-5">
 
-                <h1 className="mt-5 my-2 text-warning">Bienvenido : {userinfo ? userinfo.name : ""} </h1>
+                <h1 className="mt-5 my-2 text-warning">Welcome:</h1>
+                <h2 className="text-warning text-break">{userinfo ? userinfo.name : ""}</h2>
                 <p className=" mt-5 fw-bolder">Email : {userinfo ? userinfo.email : ""} </p>
-                <h3 className=" mt-5 fw-bolder text-dark">Beer les desea una</h3>
+                <h3 className=" mt-5 fw-bolder text-dark">Beer whishes you</h3>
 
                 <img src={PapaNoel} alt="papanoel" style={{ maxWidth: '100%'}} />
                 <h1 className=" text-warning">Cheers!!!</h1>
