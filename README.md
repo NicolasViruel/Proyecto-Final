@@ -2,7 +2,7 @@
 
 ## Nombre del proyecto: Born to drink beer🍻
 
-#####  Proyecto final de Rolling Code School. es un e-commerce de una cerveceria, se utilizó react, CSS, Bootstrap, axios, express, font-awesome, jwt-decode, sweetalert2 para el front-end.
+#####  Proyecto final de Rolling Code School. es un e-commerce de una cerveceria, se utilizó react, CSS, Bootstrap, axios, express, font-awesome, jwt-decode, sweetalert2, formik, yup y Clsx para el front-end.
 
 ## Instalación ⚙️ 
 
@@ -44,6 +44,9 @@
 ###### 6. - Font-awesome
 ###### 7. - Jwt-decode
 ###### 8. - Sweetalert2
+###### 9. - Formik
+###### 10. -Yup
+###### 11. -Clsx
 
 ## Integrantes del Proyecto
 
