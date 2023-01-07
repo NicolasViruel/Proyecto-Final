@@ -26,10 +26,10 @@ const CreacionProducto = () => {
       .required("Product detail is required"),
     precioProducto: Yup.number()
       .min(0, "Minimum 0")
-      .max(9999, "Maximun 4")
+      .max(9999, "Maximun price 9999")
       .required("The price is required"),
     urlProducto: Yup.string()
-      .url("FInvalido Format")
+      .url("Invalid url")
       .required("URL is required"),
     categoriaProducto: Yup.string()
       .min(2, "Minimum 2 Characters")
@@ -39,7 +39,7 @@ const CreacionProducto = () => {
     graduacionProducto: Yup.string()
       .min(2, "Minimum 2 Characters")
       .max(4, "Maximun 4 Characters")
-      .matches(regExpPorcentaje,"Must be a Nunmber")
+      .matches(regExpPorcentaje,"Must be a Number")
       .trim()
       .required("Graduation is required"),
     disponibilidadProducto: Yup.boolean().required("Availability is required"),
@@ -170,6 +170,7 @@ const CreacionProducto = () => {
                 <Form.Label>Price</Form.Label>
                 <Form.Control
                   type="text"
+                  maxLength={4}
                   placeholder="Ej: 250"
                   {...formik.getFieldProps("precioProducto")}
                   className={clsx(
@@ -256,6 +257,7 @@ const CreacionProducto = () => {
                 <Form.Label>Graduation</Form.Label>
                 <Form.Control
                   type="text"
+                  maxLength={4}
                   placeholder="Ej:5 "
                   {...formik.getFieldProps("graduacionProducto")}
                   className={clsx(
