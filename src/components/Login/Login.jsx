@@ -19,6 +19,7 @@ const Login = ({ show, handleClose, setUserDate }) => {
   const [reg, setReg] = useState(false);
   const handleCloses = () => setReg(false);
   const handleShow = () => setReg(true);
+  const [isDisabled, setIsDisabled] = useState(false)
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -54,6 +55,7 @@ const Login = ({ show, handleClose, setUserDate }) => {
         confirmPassword: values.confirmPassword,
       };
       console.log(newLogin);
+      setIsDisabled(true)
       try {
         const res = await instance.post("/auth/login", newLogin);
         const user_token = res.data.token;
@@ -79,7 +81,9 @@ const Login = ({ show, handleClose, setUserDate }) => {
     },
   });
 
-  
+  // const disabledButton = () => {
+  //   setIsDisabled(true)
+  // }
 
   return (
     <Modal show={show} onHide={handleClose} backdrop="static">
@@ -143,8 +147,8 @@ const Login = ({ show, handleClose, setUserDate }) => {
             
           </Form.Group>
           <div className="d-grid gap-2">
-            <Button variant="warning" type="submit">
-              Send
+            <Button variant="warning" type="submit" disabled={isDisabled}>
+              Sign in
             </Button>
           </div>
         </Form>
