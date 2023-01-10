@@ -6,12 +6,7 @@ import "./Carousel.css"
 const Calesita = () => {
   return (
     <Carousel fade>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/5864290/pexels-photo-5864290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza1"
-        />
+      <Carousel.Item interval={1000} className='carousel slider1'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>Welcome to Born to Drink</h3>
@@ -19,26 +14,15 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/6174129/pexels-photo-6174129.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza2"
-        />
+      <Carousel.Item interval={1000} className='carousel slider2'>
         <Carousel.Caption>
           <div className="trasluz">
-
             <h3>We're the best of the night</h3>
             <p>With excellent atmosphere and the best music</p>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/1269025/pexels-photo-1269025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza3"
-        />
+      <Carousel.Item interval={1000} className='carousel slider3'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>A great place</h3>
@@ -46,12 +30,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/159291/beer-machine-alcohol-brewery-159291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza4"
-        />
+      <Carousel.Item interval={1000} className='carousel slider4'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>We've the best beers</h3>
@@ -59,12 +38,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/1089932/pexels-photo-1089932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza5"
-        />
+      <Carousel.Item interval={1000} className='carousel slider5'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>We've many varieties</h3>
@@ -72,12 +46,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza6"
-        />
+      <Carousel.Item interval={1000} className='carousel slider6'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>We have excellent services</h3>
@@ -85,12 +54,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/1269043/pexels-photo-1269043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza7"
-        />
+      <Carousel.Item interval={1000} className='carousel slider7'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>Come and celebrate your birthday</h3>
@@ -98,12 +62,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza8"
-        />
+      <Carousel.Item interval={1000} className='carousel slider8'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>The best bartenders</h3>
@@ -111,12 +70,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/995686/pexels-photo-995686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza9"
-        />
+      <Carousel.Item interval={1000} className='carousel slider9'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>Cold beers</h3>
@@ -124,12 +78,7 @@ const Calesita = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
-        <img
-          className="d-block w-100"
-          src="https://images.pexels.com/photos/1796698/pexels-photo-1796698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="cerveza10"
-        />
+      <Carousel.Item interval={1000} className='carousel slider10'>
         <Carousel.Caption>
           <div className="trasluz">
             <h3>Try our fast food</h3>
@@ -139,6 +88,9 @@ const Calesita = () => {
       </Carousel.Item>
 
     </Carousel>
+    // <Carousel>
+
+    // </Carousel>
   );
 };
 
