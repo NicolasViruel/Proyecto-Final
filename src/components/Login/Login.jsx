@@ -77,6 +77,7 @@ const Login = ({ show, handleClose, setUserDate }) => {
           text: "Email or password incorrects!",
         });
         console.log(error);
+        setIsDisabled(false);
       }
     },
   });
