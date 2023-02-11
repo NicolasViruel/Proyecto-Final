@@ -7,8 +7,10 @@ const Favorito = (props) => {
   return (
     // <div>Favorito</div>
     <Container className='pt-5'>
-      <h1>Favorites</h1>
+      <h1>Favorites:</h1>
       <hr />
+      <hr />
+
       <Construction/>
     </Container>
   )
