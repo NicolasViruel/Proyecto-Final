@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row, Image } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom';
 import instance from '../../../api/axiosUsuarios';
 import logo from "../../../assets/img/logo/Imagen1.png";
-import { regExpEmail} from '../../helpers/validateFields';
+import { regExpEmail } from '../../helpers/validateFields';
 import Swal from 'sweetalert2';
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -15,43 +15,50 @@ const EdicionUsuario = (props) => {
   const { id } = useParams()
 
   const navigate = useNavigate()
-  const EditSchema = Yup.object().shape({
-    name: Yup.string()
-    .min(8, "Minimum 8 characters")
-    .max(50, "Maximum 50 characters")
-    .trim()
-    .required("Name is required"),
-  email: Yup.string()
-    .min(8, "Minimum 8 characters")
-    .max(50, "Maximum 50 characters")
-    .matches(
-      regExpEmail,
-      "Invalid format, remember the example example@gmail.com "
-    )
-    .trim()
-    .required("Email is required"),
-  password: Yup.string(),
-  role: Yup.string()
-    .min(2, "Min 2 caracteres")
-    .max(15, "Max 15 caracteres")
-    .trim()
-    .required("The Role is requiered"),
-  })
 
-  const initialValues = {
-    name: "",
-    email: "",
-    password: "",
-    role: "",
-  };
+//   const volverTabla = navigate("/tablaUsuarios")
+const getUsuariosID = async () => {
+  try {
+    const resp = await instance.get(`/users/${id}`);
+    // setUsuarioEditar(resp.data)
+    console.log((resp.data));
+    formik.setFieldValue("name", resp.data.name, true);
+    formik.setFieldValue("email", resp.data.email, true);
+    formik.setFieldValue("password", resp.data.password, true);
+    formik.setFieldValue("role", resp.data.role, true);
+  } catch (error) {
+    console.log(error);
+    alert("Error")
+  }
+}
 
-  const formik = useFormik({
-    validationSchema: EditSchema,
-    initialValues,
-    validateOnChange: true,
-    onSubmit: async (values) =>{
-      const user_token = JSON.parse(localStorage.getItem("token"));
-      const config = {
+  useEffect(() => {
+    getUsuariosID()
+
+  }, [])
+  useEffect(() => {
+    props.funcNav(true)
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // console.log(usuarioNameRef.current.value);
+    // console.log(usuarioEmailRef.current.value);
+    // console.log(usuarioPasswordRef.current.value);
+    // console.log(usuarioRoleRef.current.value);
+
+    if (
+      !validateEmail(usuarioEmailRef.current.value) ||
+      !validatePassword(usuarioPasswordRef.current.value)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'One or more fields are invalid!'
+          })
+      return
+    };
+    const user_token = localStorage.getItem("token");
+    const config = {
       headers: {
         Authorization: `Bearer ${user_token}`,
       },
@@ -102,6 +109,7 @@ const EdicionUsuario = (props) => {
       alert("Error")
     }
   }
+}
 
   useEffect(() => {
     getUsuariosID()
@@ -111,6 +119,8 @@ const EdicionUsuario = (props) => {
     props.funcNav(true)
   }, [])
 
+
+
   return (
     <div>
       <Container className="py-5" >
@@ -119,7 +129,8 @@ const EdicionUsuario = (props) => {
         <Row>
           <Col xs={12} md={6}>
             <Form className="my-2" noValidate onSubmit={formik.handleSubmit}>
-              <Form.Group className="mb-3" controlId="formBasicName">
+              {/* nombre */}
+            <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
@@ -144,6 +155,7 @@ const EdicionUsuario = (props) => {
                 </div>
               )}
             </Form.Group>
+            {/* email */}
             <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -169,7 +181,8 @@ const EdicionUsuario = (props) => {
               </div>
             )}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+            {/* password */}
+            <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -196,7 +209,8 @@ const EdicionUsuario = (props) => {
             )}
             
           </Form.Group>
-          <Form.Group className="my-1" controlId="role">
+            {/* role */}
+            <Form.Group className="my-1" controlId="role">
                 <Form.Label>Role</Form.Label>
                 <Form.Select
                   {...formik.getFieldProps("role")}
@@ -228,7 +242,7 @@ const EdicionUsuario = (props) => {
                   )}
               </Form.Group>
               <div className="text-center mt-3">
-                <Button variant="warning" type="submit">Update 🍻</Button>
+                <Button variant="warning" type='submit'>Update 🍻</Button>
                 <Button variant="danger" className='mx-3' onClick={() => navigate(`/tablaUsuarios`)}>Go to Back 🡆</Button>
               </div>
             </Form>
@@ -242,6 +256,5 @@ const EdicionUsuario = (props) => {
       </Container>
     </div>
   )
-}
 
 export default EdicionUsuario

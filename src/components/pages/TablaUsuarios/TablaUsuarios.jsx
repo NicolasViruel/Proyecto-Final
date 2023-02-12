@@ -100,6 +100,8 @@ const TablaUsuarios = () => {
                       <td>{user.role}</td>
                       <td>
                       <div className="d-flex justify-content-center">
+                        {user.role !== "admin" &&
+                        <>
                         <Button variant="outline-success mx-1">
                           <Link
                             to={`/edicionUsuario/${user._id}`}
@@ -115,6 +117,7 @@ const TablaUsuarios = () => {
                         >
                           <i className="fa-solid fa-user-xmark"></i>
                         </Button>
+                        </>}
                       </div>
                       </td>
                       

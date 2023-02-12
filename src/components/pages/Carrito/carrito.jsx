@@ -87,7 +87,7 @@ const ModalCarrito = ({show, handleClose}) => {
       </Modal.Body>
         <h4 className="text-center">Total :{`$ ${total}`}</h4>
       <Modal.Footer className="text-center">
-        <div className="text-center">Ticket Op: {myuuid} </div>
+        
         <Button variant="secondary" onClick={vaciarCarrito}>
         Clear cart
         </Button>
