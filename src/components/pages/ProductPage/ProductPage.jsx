@@ -7,6 +7,7 @@ import ModalCarrito from "../Carrito/carrito.jsx"
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
+import { getuser_id } from '../../helpers/Jwt';
 
 
 
@@ -16,6 +17,7 @@ const ProductPage = (props) => {
   const [producto, setProductos] = useState([])
   const [buscadorProducto, setbuscadorProductos] = useState("")
   const [contador, setContador] = useState(0)
+  
   // carrrito
   const [productosCart, setProductosCart] = useState([])
 
@@ -79,17 +81,9 @@ const navigate = useNavigate()
     localStorage.setItem('cart', JSON.stringify(productosCart));
   }
   //enviar a favoritos
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    const newProducto = {
-      ProductName:prod.ProductName,
-      Productdetalle:prod.Productdetalle,
-      PriceProduct:precioProducto,
-      ImgURL:prod.ImgURL,
-      Category:prod.Category,
-      Graduation:prod.Graduation,
-      Avaliable:disponibilidadProducto
-    }
+  const addFavorites= async (product_id)=>{
+    console.log(product_id);
+    const user_id = getuser_id()
     Swal.fire({
       title: 'Do you want to add to Favorite?',    
       icon: 'question',
@@ -100,18 +94,18 @@ const navigate = useNavigate()
     }).then( async (result) => {
       if (result.isConfirmed) {
         try {
-          const resp = await instance.post("/favorites/",
-           newProducto,         
-        );
-  
+          const resp = await instance.post("/favorites", {
+            user_id: user_id,
+            product_id: product_id,
+            
+          });
+          console.log(resp.data);
         if (resp.status===200) {
           Swal.fire(
          'Added!',
          'The product was add correctly.',
          'success'
-       )  
-       
-             
+       )       
         }      
         } catch (error) {
         console.log(error);   
@@ -187,7 +181,7 @@ const navigate = useNavigate()
                     </Card.Text>
                     <div className="d-grid gap-2">
                     <Button type="submit" variant="info" onClick={() => { incrementarCarrito(); guardaCarrito(prod) }}> Add to 🛒</Button>
-                      <Button variant='danger' onClick={() =>{handleSubmit(),navigate(`/favoritos`)} } >Add to ❤</Button>
+                      <Button variant='danger' onClick={() =>{addFavorites(prod._id)} } >Add to ❤</Button>
                       <Button variant="secondary" onClick={() => navigate(`/products/${prod._id}`)}>
                         Details
                       </Button>
