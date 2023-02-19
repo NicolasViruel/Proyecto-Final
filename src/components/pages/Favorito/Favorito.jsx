@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { Col, Row, Card, Spinner, Badge } from "react-bootstrap";
+import instance from "../../../api/axiosUsuarios";
 
 
 const Favorito = (props) => {
@@ -33,7 +34,7 @@ const Favorito = (props) => {
        <Row>
           {productoFavorites.length > 0 ? (
             productoFavorites.map((prod) => (
-              <Col xs={12} lg={4} md={6} key={prod._id} className="mb-3">
+              <Col xs={12} lg={4} md={6} key={produc._id} className="mb-3">
                 <Card className="mt-4 h-100 card-test" style={{ position: 'relative' }}>
                   <Card.Img variant="top" src={prod.ImgURL} className="imagen-tarjeta" />
                   <Card.Body>
@@ -58,8 +59,7 @@ const Favorito = (props) => {
             <div className='d-flex justify-content-center'>
               <Spinner color="warning" />
             </div>
-          )}
-        
+          )}       
           
         </Row>
         {/* productos */}
