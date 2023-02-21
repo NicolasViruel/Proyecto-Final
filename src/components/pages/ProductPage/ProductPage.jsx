@@ -110,8 +110,8 @@ const ProductPage = (props) => {
           console.log(error);
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!'
+            title: 'The product has already been added.',
+            text: 'to favorites'
           })
         }
       }
