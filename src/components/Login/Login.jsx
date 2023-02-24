@@ -82,10 +82,6 @@ const Login = ({ show, handleClose, setUserDate }) => {
     },
   });
 
-  // const disabledButton = () => {
-  //   setIsDisabled(true)
-  // }
-
   return (
     <Modal show={show} onHide={handleClose} backdrop="static">
       <Modal.Header closeButton>
