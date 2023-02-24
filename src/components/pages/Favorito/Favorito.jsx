@@ -6,7 +6,7 @@ import { getuser_id } from '../../helpers/Jwt';
 
 const Favorito = (props) => {
   const [favorites, setFavorites] = useState({})
-  
+
   props.funcNav(true)
 
 
@@ -24,6 +24,7 @@ const Favorito = (props) => {
   }
 
   const handleDelete = (id) => {
+    const user_id = getuser_id()
     Swal.fire({
       title: 'Do you want to delete this product?',
       icon: 'question',
@@ -34,7 +35,7 @@ const Favorito = (props) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const resp = await instance.delete(`/productos/${id}`,
+          const resp = await instance.delete(`/favorites/${user_id}/${id}`,
 
           );
           if (resp.status === 200) {
@@ -52,7 +53,7 @@ const Favorito = (props) => {
       }
     });
   }
-  
+
   useEffect(() => {
     getFavorites()
   }, [])
@@ -81,29 +82,30 @@ const Favorito = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {favorites.length > 0 ? 
-                favorites.map((prod, index) => (
-                  <tr key={prod._id} >
-                    <td>{index + 1}</td>
-                    <td>{prod.ProductName}</td>
-                    <td>{prod.Productdetalle}</td>
-                    <td>${prod.PriceProduct}</td>
-                    <td>
-                      <Image className="truncate-img-link m-0" src={prod.ImgURL} width={100}
-                        height={100} />
-                    </td>
-                    <td>{prod.Category}</td>
-                    <td>{prod.Graduation}%</td>
-                    <td>{prod.Avaliable ? 'Yes' : 'No'}</td>
-                    <td >
-                      <div className="d-flex justify-content-center">
-                        <Button variant="outline-danger mx-1" onClick={() => handleDelete(prod._id)}>
-                          <i className="fa-solid fa-trash-can"></i>
-                        </Button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                {favorites.length > 0 ?
+                  favorites.map((prod, index) => (
+                    <tr key={prod.product_id._id} >
+                      <td>{index + 1}</td>
+                      <td>{prod.product_id.ProductName}</td>
+                      <td>{prod.product_id.Productdetalle}</td>
+                      <td>${prod.product_id.PriceProduct}</td>
+                      <td>
+                        <Image className="truncate-img-link m-0" src={prod.product_id.ImgURL} width={100}
+                          height={100} />
+                      </td>
+                      <td>{prod.product_id.Category}</td>
+                      <td>{prod.product_id.Graduation}%</td>
+                      <td>{prod.product_id.Avaliable ? 'Yes' : 'No'}</td>
+                      <td >
+                        <div className="d-flex justify-content-center">
+                          <Button variant="outline-danger mx-1" onClick={() => handleDelete(prod.product_id._id)}>
+                            <i className="fa-solid fa-trash-can"></i>
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                    // console.log(prod.product_id.PriceProduct)
+                  ))
                   :
                   <tr>
                     <td>
