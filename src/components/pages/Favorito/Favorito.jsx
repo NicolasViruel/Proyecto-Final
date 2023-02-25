@@ -35,7 +35,7 @@ const Favorito = (props) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const resp = await instance.delete(`/favorites/${user_id}/${id}`,
+          const resp = await instance.delete(`/favorites/${id}`,
 
           );
           if (resp.status === 200) {
@@ -98,13 +98,12 @@ const Favorito = (props) => {
                       <td>{prod.product_id.Avaliable ? 'Yes' : 'No'}</td>
                       <td >
                         <div className="d-flex justify-content-center">
-                          <Button variant="outline-danger mx-1" onClick={() => handleDelete(prod.product_id._id)}>
+                          <Button variant="outline-danger mx-1" onClick={() => handleDelete(prod._id)}>
                             <i className="fa-solid fa-trash-can"></i>
                           </Button>
                         </div>
                       </td>
                     </tr>
-                    // console.log(prod.product_id.PriceProduct)
                   ))
                   :
                   <tr>
