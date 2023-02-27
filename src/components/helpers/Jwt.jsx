@@ -7,3 +7,13 @@ export const jwtDecoded = (token) =>{
     }
     
 }
+
+export const getuser_id = () =>{
+    const token = localStorage.getItem("token")
+    if (token) {
+        const decoded = jwt(token)
+    return decoded.user_id
+    }
+    
+}
+

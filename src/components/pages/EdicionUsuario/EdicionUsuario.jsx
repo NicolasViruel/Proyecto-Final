@@ -1,128 +1,105 @@
-import React, { useEffect } from 'react'
-import { Button, Col, Container, Form, Row, Image } from 'react-bootstrap'
-import { useNavigate, useParams } from 'react-router-dom';
-import instance from '../../../api/axiosUsuarios';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal"
+import Form from "react-bootstrap/Form";
+import { Image } from "react-bootstrap"
 import logo from "../../../assets/img/logo/Imagen1.png";
-import { regExpEmail } from '../../helpers/validateFields';
-import Swal from 'sweetalert2';
+import facebook from "../../../assets/img/social-icons/facebook-logo.webp";
+import google from "../../../assets/img/social-icons/google-logo.png";
+import instance from "../../../api/axiosUsuarios";
+import { regExpEmail, regExpPassword } from "../../helpers/validateFields";
+import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import clsx from "clsx";
 
-const EdicionUsuario = (props) => {
-  props.funcNav(true)
+const Registro = ({ show, handleClose }) => {
 
-  const { id } = useParams()
 
-  const navigate = useNavigate()
-  const EditSchema = Yup.object().shape({
+  const RegisterSchema = Yup.object().shape({
     name: Yup.string()
-    .min(8, "Minimum 8 characters")
-    .max(50, "Maximum 50 characters")
-    .trim()
-    .required("Name is required"),
-  email: Yup.string()
-    .min(8, "Minimum 8 characters")
-    .max(50, "Maximum 50 characters")
-    .matches(
-      regExpEmail,
-      "Invalid format, remember the example example@gmail.com "
-    )
-    .trim()
-    .required("Email is required"),
-  password: Yup.string(),
-  role: Yup.string()
-    .min(2, "Min 2 caracteres")
-    .max(15, "Max 15 caracteres")
-    .trim()
-    .required("The Role is requiered"),
-  })
+      .min(8, "Minimum 8 characters")
+      .max(50, "Maximum 50 characters")
+      .trim()
+      .required("Name is required"),
+    email: Yup.string()
+      .min(8, "Minimum 8 characters")
+      .max(50, "Maximum 50 characters")
+      .matches(
+        regExpEmail,
+        "Invalid format, remember the example example@gmail.com "
+      )
+      .trim()
+      .required("Email is required"),
+    password: Yup.string()
+      .min(8, "Minimum 8 characters")
+      .max(15, "Maximum 15 characters")
+      .matches(
+        regExpPassword,
+        "It must have a capital letter, a lower case letter and a number"
+      )
+      .trim()
+      .required("The password is required"),
+    confirmPassword: Yup.string()
+      .min(8, "Minimum 8 characters")
+      .max(15, "Maximum 15 characters")
+      .oneOf([Yup.ref("password")], "Passwords must be the same")
+      .required("Password confirmation is required"),
+  });
 
   const initialValues = {
     name: "",
     email: "",
     password: "",
-    role: "",
+    confirmPassword: "",
   };
 
   const formik = useFormik({
-    validationSchema: EditSchema,
+    validationSchema: RegisterSchema,
     initialValues,
     validateOnChange: true,
-    onSubmit: async (values) =>{
-      const user_token = JSON.parse(localStorage.getItem("token"));
-      const config = {
-      headers: {
-        Authorization: `Bearer ${user_token}`,
-      },
-    }
-      const newEdit = {
+    onSubmit: async (values) => {
+        Swal.fire({
+            title: 'Creating...!',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: () => {
+              Swal.showLoading()
+            },
+          })
+      const newRegister = {
         name: values.name,
         email: values.email,
-        role: values.role,
+        password: values.password,
+        confirmPassword: values.confirmPassword,
       };
-      Swal.fire({
-            title: 'Do you want to update this user?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Accept'
-          }).then(async (result) => {
-            if (result.isConfirmed) {
-              try {
-                const resp = await instance.put(`/users/${id}`,newEdit, config );
-                if (resp.status === 200) {
-                  Swal.fire(
-                    'Update',
-                    'The user was successfully updated.',
-                    'success'
-                  )
-                  navigate(`/TablaUsuario`)
-                }
-              } catch (error) {
-                console.log(error);
-              }
-            }
-          });
-    }
-  })
-
-//   const volverTabla = navigate("/tablaUsuarios")
-const getUsuariosID = async () => {
-  try {
-    const resp = await instance.get(`/users/${id}`);
-    // setUsuarioEditar(resp.data)
-    console.log((resp.data));
-    formik.setFieldValue("name", resp.data.name, true);
-    formik.setFieldValue("email", resp.data.email, true);
-    formik.setFieldValue("password", resp.data.password, true);
-    formik.setFieldValue("role", resp.data.role, true);
-  } catch (error) {
-    console.log(error);
-    alert("Error")
-  }
-}
-
-  useEffect(() => {
-    getUsuariosID()
-
-  }, [])
-  useEffect(() => {
-    props.funcNav(true)
-  }, [])
-
-
-
+      try {
+        const res = await instance.post("/auth/register", newRegister);
+        console.log(res);
+        Swal.close();
+        handleClose();
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error?.response?.msg ? error?.response?.msg : "error",
+        });
+        console.log(error);
+      }
+    },
+  });
   return (
-    <div>
-      <Container className="py-5" >
-        <h1 >Edit User</h1>
-        <hr />
-        <Row>
-          <Col xs={12} md={6}>
-            <Form className="my-2" noValidate onSubmit={formik.handleSubmit}>
-              {/* nombre */}
+    <>
+      <Modal show={show} onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <Image src={logo} alt="logo" width="40" />
+            Register
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form noValidate onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -148,7 +125,6 @@ const getUsuariosID = async () => {
                 </div>
               )}
             </Form.Group>
-            {/* email */}
             <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -174,18 +150,16 @@ const getUsuariosID = async () => {
               </div>
             )}
           </Form.Group>
-            {/* password */}
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
-              disabled= {true}
               placeholder="Enter your password"
               name="password"
               maxLength={15}
               minLength={8}
               {...formik.getFieldProps("password")}
-              className= {clsx(
+              className={clsx(
                 "form-control",
                 {
                   "is-valid": formik.touched.password && !formik.errors.password,
@@ -202,53 +176,101 @@ const getUsuariosID = async () => {
             )}
             
           </Form.Group>
-            {/* role */}
-            <Form.Group className="my-1" controlId="role">
-                <Form.Label>Role</Form.Label>
-                <Form.Select
-                  {...formik.getFieldProps("role")}
-                  className={clsx(
-                    "form-control",
-                    {
-                      "is-valid":
-                        formik.touched.role &&
-                        !formik.errors.role,
-                    },
-                    {
-                      "is-invalid":
-                        formik.touched.role &&
-                        formik.errors.role,
-                    }
-                  )}
-                >
-                  <option value="">Select a category</option>
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
-                </Form.Select>
-                {formik.touched.role &&
-                  formik.errors.role && (
-                    <div className="fv-plugins-message-container text-danger fw-bolder">
-                      <span role="alert">
-                        {formik.errors.role}
-                      </span>
-                    </div>
-                  )}
-              </Form.Group>
-              <div className="text-center mt-3">
-                <Button variant="warning" type='submit'>Update 🍻</Button>
-                <Button variant="danger" className='mx-3' onClick={() => navigate(`/tablaUsuarios`)}>Go to Back 🡆</Button>
+          <Form.Group className="mb-3" controlId="formConfirmPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Confirm your password"
+              name="confirmPassword"
+              maxLength={15}
+              minLength={8}
+              {...formik.getFieldProps("confirmPassword")}
+              className={clsx(
+                "form-control",
+                {
+                  "is-valid": formik.touched.confirmPassword && !formik.errors.confirmPassword,
+                },
+                {
+                  "is-invalid": formik.touched.confirmPassword && formik.errors.confirmPassword,
+                }
+              )}
+            />
+            {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+              <div className="fv-plugins-message-container text-danger fw-bolder">
+                <span role="alert">{formik.errors.confirmPassword}</span>
               </div>
-            </Form>
-          </Col>
+            )}
+          </Form.Group>
+          <div className="d-grid gap-2">
+            <Button variant="warning" type="submit">
+              Send
+            </Button>
+          </div>
+          </Form>
+          <div className="container my-3 w-100">
+            <div className="row text-center">
+              <h3 className="col-12">Sign in with</h3>
+            </div>
+            <div className="row justify-content-center">
+              <div className="d-flex">
+                <Button variant="outline-info" className=" w-100 my-1 mx-2">
+                  <a
+                    href="https://www.facebook.com/login/"
+                    className="text-decoration-none text-dark"
+                    target="_blank"
+                  >
+                    <div className=" row align-content-center">
+                      {/* <!--Row para alinear img y texto--> */}
+                      <div className="col-2 d-none d-md-block">
+                        <Image
+                          src={facebook}
+                          className="mx-3"
+                          width="30"
+                          alt="facebook"
+                        />
+                      </div>
+                      <div className="col-12 col-md-10 text-center font-weight-bolder">
+                        Facebook
+                      </div>
+                    </div>
+                  </a>
+                </Button>
+                {/* <!--Final de Primer Boton--> */}
 
-          {/* Form Product */}
-          <Col className="d-none d-md-block text-center">
-            <Image src={logo} alt="logo" style={{maxWidth: '80%'}} />
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  )
-}
-
-export default EdicionUsuario
+                <Button variant="outline-warning" className=" w-100 my-1 mx-2">
+                  <a
+                    href="https://www.google.com/"
+                    className="text-decoration-none text-dark"
+                    target="_blank"
+                  >
+                    <div className=" row align-content-center">
+                      {/* <!--Row para alinear img y texto--> */}
+                      <div className="col-2 d-none d-md-block">
+                        <Image
+                          src={google}
+                          className="mx-3"
+                          width="30"
+                          alt="google"
+                        />
+                      </div>
+                      <div className="col-12 col-md-10 text-center font-weight-bolder">
+                        Google
+                      </div>
+                    </div>
+                  </a>
+                </Button>
+                {/* <!--Final de Segundo Boton--> */}
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+export default Registro;

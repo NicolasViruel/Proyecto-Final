@@ -40,8 +40,6 @@ const NavBar = ({ setUserDate, userDate}) => {
     }
    
   }, [userDate])
-  
-  console.log(role);
 
   return (
     <div className="sticky-top">
