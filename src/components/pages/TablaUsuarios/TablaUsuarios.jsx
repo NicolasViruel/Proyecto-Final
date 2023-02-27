@@ -34,7 +34,6 @@ const TablaUsuarios = () => {
 
   const handleDelete = (id) => {
     const user_token = JSON.parse(localStorage.getItem("token"));
-    console.log(user_token);
     const config = {
       headers: {
         Authorization: `Bearer ${user_token}`,

@@ -82,7 +82,6 @@ const ProductPage = (props) => {
   }
   //enviar a favoritos
   const addFavorites = async (product_id) => {
-    console.log(product_id);
     const user_id = getuser_id()
     Swal.fire({
       title: 'Do you want to add to Favorite?',
@@ -98,7 +97,6 @@ const ProductPage = (props) => {
             user_id: user_id,
             product_id: product_id,
           });
-          console.log(resp.data);
           if (resp.status === 200) {
             Swal.fire(
               'Added!',

@@ -107,7 +107,6 @@ const EdicionProducto = (props) => {
   const getProductosID = async () => {
     try {
       const resp = await instance.get(`/productos/${id}`);
-      console.log(resp.data);
       formik.setFieldValue("nombreProducto", resp.data.ProductName, true);
       formik.setFieldValue("detalleProducto", resp.data.Productdetalle, true);
       formik.setFieldValue("precioProducto", resp.data.PriceProduct, true);

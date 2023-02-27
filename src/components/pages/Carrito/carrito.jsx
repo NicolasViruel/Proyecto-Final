@@ -20,9 +20,7 @@ const ModalCarrito = ({show, handleClose}) => {
   }, [show]);
   const deleteProduct=(uuid)=>{
     const newArr=cart.filter(prod=>prod.uuid!==uuid);
-    console.log(newArr);
     setCart(newArr);
-    console.log(cart);
     localStorage.setItem('cart',JSON.stringify(newArr));
     }
     

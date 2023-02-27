@@ -24,7 +24,6 @@ const RecPassword = (props) => {
       }
       try {
         const res = await instance.post("/recovery-password", user);
-        console.log(res);
         const user_token = res.data.token
         localStorage.setItem("token", user_token)
         Swal.fire({

@@ -7,7 +7,7 @@ import PapaNoel from "../../../image/Papanoel.png"
 import CartelBeer from "../../../image/CartelBeer.jpeg"
 import CartelBeer3 from "../../../image/CartelBeer3.jpg"
 import CartelBeer4 from "../../../image/CartelBeer4.jpeg"
-import CardProducto from "./CardProducto/CardProducto";
+import CardProducto2 from "./CardProducto/CardProducto2";
 import ipa from '../../../assets/img/imgHome/IPA1.jpg'
 import Lagers from '../../../assets/img/imgHome/amberLager.webp'
 import Porter from '../../../assets/img/imgHome/porter.png'
@@ -84,25 +84,25 @@ const Home = (props) => {
           {/* Products */}
           <Row>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={ipa} name="Ipa" text="poner algo aqui" graduation="3%" price="100" category="Cerveceria" id="1" />
+              <CardProducto2 img={ipa} name="Ipa" text="poner algo aqui" graduation="3%" price="100" category="Cerveceria" id="1" />
             </Col>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={Lagers} name="Lagers" text="poner algo aqui" graduation="4%" price="250" category="Cerveceria" id="2" />
+              <CardProducto2 img={Lagers} name="Lagers" text="poner algo aqui" graduation="4%" price="250" category="Cerveceria" id="2" />
             </Col>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={Porter} name="Porter" text="poner algo aqui" graduation="1%" price="300" category="Cerveceria" id="3" />
+              <CardProducto2 img={Porter} name="Porter" text="poner algo aqui" graduation="1%" price="300" category="Cerveceria" id="3" />
             </Col>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={Stout} name="Stout" text="poner algo aqui" graduation="2%" price="450" category="Cerveceria" id="4" />
+              <CardProducto2 img={Stout} name="Stout" text="poner algo aqui" graduation="2%" price="450" category="Cerveceria" id="4" />
             </Col>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={Apa} name="Apa" text="poner algo aqui" graduation="5%" price="200" category="Cerveceria" id="5" />
+              <CardProducto2 img={Apa} name="Apa" text="poner algo aqui" graduation="5%" price="200" category="Cerveceria" id="5" />
             </Col>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={Honey} name="Honey" text="poner algo aqui" graduation="3%" price="150" category="Cerveceria" id="6" />
+              <CardProducto2 img={Honey} name="Honey" text="poner algo aqui" graduation="3%" price="150" category="Cerveceria" id="6" />
             </Col>
             <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
-              <CardProducto img={Scottisch} name="Scottisch" text="poner algo aqui" graduation="4%" price="350" category="Cerveceria" id="7" />
+              <CardProducto2 img={Scottisch} name="Scottisch" text="poner algo aqui" graduation="4%" price="350" category="Cerveceria" id="7" />
             </Col>
           </Row>
         

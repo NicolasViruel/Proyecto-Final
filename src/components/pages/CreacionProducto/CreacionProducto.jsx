@@ -58,7 +58,6 @@ const CreacionProducto = () => {
     initialValues,
     validateOnChange: true,
     onSubmit: async (values) => {
-      console.log("Entro en el submit");
       const newProducto = {
         ProductName: values.nombreProducto,
         Productdetalle: values.detalleProducto,
@@ -68,7 +67,6 @@ const CreacionProducto = () => {
         Graduation: values.graduacionProducto,
         Avaliable: values.disponibilidadProducto,
       };
-      console.log(newProducto);
       Swal.fire({
         title: "Do you want to create this product?",
         icon: "question",

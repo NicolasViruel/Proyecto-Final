@@ -76,7 +76,6 @@ const Registro = ({ show, handleClose }) => {
       };
       try {
         const res = await instance.post("/auth/register", newRegister);
-        console.log(res);
         Swal.close();
         handleClose();
       } catch (error) {

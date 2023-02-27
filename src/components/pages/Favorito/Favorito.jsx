@@ -13,10 +13,8 @@ const Favorito = (props) => {
   const getFavorites = async () => {
     const user_id = getuser_id()
     try {
-      console.log(user_id);
       const resp = await instance.get(`/favorites/${user_id}`)
       setFavorites(resp.data)
-      console.log(resp.data);
     } catch (error) {
       console.log(error);
       alert("Error")
