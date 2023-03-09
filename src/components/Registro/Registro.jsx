@@ -77,6 +77,11 @@ const Registro = ({ show, handleClose }) => {
       };
       try {
         const res = await instance.post("/auth/register", newRegister);
+        Swal.fire({
+          icon: "success",
+          title: "Welcome!",
+          text: "Now you are registered!",
+        });
         Swal.close();
         handleClose();
       } catch (error) {
