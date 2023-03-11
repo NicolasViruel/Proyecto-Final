@@ -107,10 +107,15 @@ const Favorito = (props) => {
                   <tr>
                     <td>
                       <Spinner color="warning" />
+                      <div>
+                       <h1 className='text-ligth'>You haven't selected any favorites yet</h1>
+                      </div>
                     </td>
                   </tr>}
               </tbody>
+              
             </Table>
+           
           </Col>
         </Row>
       </Container>
