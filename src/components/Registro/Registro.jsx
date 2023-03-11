@@ -69,6 +69,12 @@ const Registro = ({ show, handleClose }) => {
               Swal.showLoading()
             },
           })
+          Swal.fire({
+            icon: "success",
+            title: "Welcome!",
+            text: "Now you are logged!",
+          });
+          formik.resetForm()
       const newRegister = {
         name: values.name,
         email: values.email,
@@ -77,13 +83,9 @@ const Registro = ({ show, handleClose }) => {
       };
       try {
         const res = await instance.post("/auth/register", newRegister);
-        Swal.fire({
-          icon: "success",
-          title: "Welcome!",
-          text: "Now you are logged!",
-        });
         Swal.close();
         handleClose();
+        
       } catch (error) {
         Swal.fire({
           icon: "error",
