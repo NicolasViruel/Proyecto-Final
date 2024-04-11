@@ -13,6 +13,7 @@
 ###### Para ejecutarlo de forma local:
 
 ###### npm run dev
+###### ADMIN: nicolasviruel@gmail.com - password: 123456Ab
 
 ## Estructura del sitio
 
